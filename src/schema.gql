@@ -1,0 +1,33 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Film {
+  director: String!
+  episode_id: Int!
+  opening_crawl: String!
+  producer: String!
+  release_date: String!
+  title: String!
+}
+
+input FilmFilterInput {
+  page: Int
+  search: String
+}
+
+type FilmOpeningStats {
+  mostFrequentCharacterNames: [String!]!
+  wordOccurrences: [WordOccurrence!]!
+}
+
+type Query {
+  film(id: String!): Film!
+  filmOpeningStats: FilmOpeningStats!
+  films(filter: FilmFilterInput): [Film!]!
+}
+
+type WordOccurrence {
+  count: Int!
+  word: String!
+}
