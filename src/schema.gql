@@ -6,14 +6,22 @@ type Film {
   director: String!
   episode_id: Int!
   opening_crawl: String!
+  planets: [Planet!]
   producer: String!
   release_date: String!
+  species: [Species!]
+  starships: [Starship!]
   title: String!
+  vehicles: [Vehicle!]
 }
 
 input FilmFilterInput {
-  page: Int
+  director: String
+  episode_id: Int
+  opening_crawl: String
+  producer: String
   search: String
+  title: String
 }
 
 type FilmOpeningStats {
@@ -21,10 +29,141 @@ type FilmOpeningStats {
   wordOccurrences: [WordOccurrence!]!
 }
 
+input PaginationInput {
+  page: Int
+}
+
+type Planet {
+  climate: String
+  diameter: String
+  gravity: String
+  id: String!
+  name: String!
+  orbital_period: String
+  population: String
+  rotation_period: String
+  surface_water: String
+  terrain: String
+}
+
+input PlanetFilterInput {
+  climate: String
+  created: String
+  diameter: String
+  edited: String
+  gravity: String
+  name: String
+  orbital_period: String
+  population: String
+  rotation_period: String
+  search: String
+  surface_water: String
+  terrain: String
+}
+
 type Query {
-  film(id: String!): Film!
+  film(id: String!): Film
   filmOpeningStats: FilmOpeningStats!
-  films(filter: FilmFilterInput): [Film!]!
+  films(filter: FilmFilterInput, pagination: PaginationInput): [Film!]!
+  planet(id: String!): Planet
+  planets(filter: PlanetFilterInput, pagination: PaginationInput): [Planet!]!
+  species(filter: SpeciesFilterInput, pagination: PaginationInput): [Species!]!
+  speciesById(id: String!): Species!
+  starship(id: String!): Starship!
+  starships(filter: StarshipFilterInput, pagination: PaginationInput): [Starship!]!
+  starshipsFullData(filter: StarshipFilterInput, pagination: PaginationInput): [Starship!]!
+  vehicle(id: String!): Vehicle!
+  vehicles(filter: VehicleFilterInput, pagination: PaginationInput): [Vehicle!]!
+}
+
+type Species {
+  average_height: String
+  average_lifespan: String
+  classification: String
+  designation: String
+  eye_colors: String
+  hair_colors: String
+  id: String!
+  language: String
+  name: String!
+  skin_colors: String
+}
+
+input SpeciesFilterInput {
+  average_height: String
+  average_lifespan: String
+  classification: String
+  designation: String
+  eye_colors: String
+  hair_colors: String
+  language: String
+  name: String
+  search: String
+  skin_colors: String
+}
+
+type Starship {
+  MGLT: String
+  cargo_capacity: String
+  consumables: String
+  cost_in_credits: String
+  crew: String
+  hyperdrive_rating: String
+  id: String!
+  length: String
+  manufacturer: String
+  max_atmosphering_speed: String
+  model: String
+  name: String!
+  passengers: String
+  starship_class: String
+}
+
+input StarshipFilterInput {
+  MGLT: String
+  cargo_capacity: String
+  consumables: String
+  cost_in_credits: String
+  crew: String
+  hyperdrive_rating: String
+  length: String
+  manufacturer: String
+  max_atmosphering_speed: String
+  model: String
+  name: String
+  passengers: String
+  search: String
+  starship_class: String
+}
+
+type Vehicle {
+  cargo_capacity: String
+  consumables: String
+  cost_in_credits: String
+  crew: String
+  id: String!
+  length: String
+  manufacturer: String
+  max_atmosphering_speed: String
+  model: String
+  name: String!
+  passengers: String
+  vehicle_class: String
+}
+
+input VehicleFilterInput {
+  cargo_capacity: String
+  consumables: String
+  cost_in_credits: String
+  crew: String
+  length: String
+  manufacturer: String
+  max_atmosphering_speed: String
+  model: String
+  name: String
+  passengers: String
+  search: String
+  vehicle_class: String
 }
 
 type WordOccurrence {

@@ -1,7 +1,7 @@
 import { InputType, Field, Int } from '@nestjs/graphql';
 
 @InputType()
-export class FilmPaginationInput {
+export class PaginationInput {
   @Field(() => Int, { nullable: true })
   page?: number;
 }

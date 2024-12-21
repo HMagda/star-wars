@@ -1,8 +1,8 @@
-import { Module } from '@nestjs/common';
-import { SwapiService } from './swapi.service';
+import { Module } from "@nestjs/common";
+import { SwapiService } from "./swapi.service";
 
 @Module({
-  providers: [SwapiService],
-  exports: [SwapiService]
+    providers: [SwapiService],
+    exports: [SwapiService],
 })
 export class SwapiModule {}
