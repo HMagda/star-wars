@@ -20,26 +20,11 @@ This project provides a GraphQL API that aggregates and enriches data from [swap
 - **Jest** for testing
 - **Docker / Docker Compose** for easy local setup
 
-## Project Structure
-
-- `src/`  
-  - `app.module.ts` - Root module  
-  - `common/` - Shared utilities and services (cache, swapi)  
-    - `cache/` - Redis cache integration  
-    - `swapi/` - SWAPI integration service  
-  - `resources/` - Resource-specific modules, resolvers, and services  
-    - `films/`, `people/`, `planets/`, `species/`, `starships/`, `vehicles/`  
-      - Each with a `*.service.ts`, `*.resolver.ts`, and `dto/` & `models/` directories
-  - `main.ts` - Application entry point
-
-- `tests/` or `__tests__/`  
-  - Contains Jest test files for services
-
 ## Setup & Installation
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/starwars-api.git
+   git clone https://github.com/HMagda/star-wars.git
    cd starwars-api
    ```
 
@@ -48,28 +33,13 @@ This project provides a GraphQL API that aggregates and enriches data from [swap
    npm install
    ```
 
-3. **Environment Variables**:
-   Create a `.env` file if necessary. For local development with Docker:
-   ```bash
-   REDIS_HOST=redis
-   REDIS_PORT=6379
-   ```
-
-4. **Start with Docker Compose**:
+3. **Start with Docker Compose**:
    ```bash
    docker-compose up --build
    ```
    This will start the Node.js application and a Redis instance.
 
    The application will be available at `http://localhost:3000/graphql`.
-
-5. **Running Without Docker**:
-   Ensure Redis is running locally, then:
-   ```bash
-   npm run start:dev
-   ```
-   
-   The GraphQL endpoint is still at `http://localhost:3000/graphql`.
 
 ## Usage
 
@@ -129,5 +99,5 @@ This project provides a GraphQL API that aggregates and enriches data from [swap
   Chosen over REST for flexibility. Clients can request only the fields they need.
 
 - **Testing**:  
-  Jest tests mock SWAPI responses and test filtering logic, resource expansions, and complex operations like opening crawl stats.
+  Jest tests mock SWAPI responses and test filtering logic, resource expansions, and complex operations like opening stats.
 
